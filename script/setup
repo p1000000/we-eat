@@ -1,0 +1,29 @@
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/.."
+
+docker-compose down --remove-orphans
+
+# create shared network if it doesn't exist
+if docker network inspect wework_dev > /dev/null 2>&1
+then
+    echo 'Joining existing local network'
+else
+    docker network create wework_dev > /dev/null 2>&1
+    echo 'Created local docker network'
+fi
+
+docker volume rm PROJECT-gems &> /dev/null || /usr/bin/true
+docker volume create --name=PROJECT-gems
+docker volume create --name=PROJECT-spring
+
+docker-compose run base bundle config --local without "production"
+docker-compose run base bundle config --delete frozen
+script/bootstrap
+
+docker-compose run base rails db:create db:migrate db:setup
+
+docker-compose -f docker-compose.test.yml up -d pg spring
+docker-compose -f docker-compose.test.yml run test rails db:create db:migrate db:setup db:test:prepare
+
+# Add any additional initial data seeding/etc.

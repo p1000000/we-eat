@@ -1,0 +1,65 @@
+version: '3'
+
+networks:
+  default:
+    external:
+      name: wework_dev
+
+services:
+  base: &app_base
+    image: ${CONTAINER_TAG:-quay.io/wework/PROJECT:master}
+    # Uncomment to add environment variables
+    # env_file: .env
+    environment:
+      - DATABASE_URL=postgres://postgres:R0tate1@pg/
+      # you can add more shared ENV here
+      # you can also have multiple env_files if you prefer
+      # committing it that way
+      #
+      # if you want to talk to something on the host
+      # you can use this as the url (replacing `localhost`):
+      # `host.docker.internal`
+    volumes:
+      # this replaces the project folder in the docker image with the current directory
+      - ${PWD}:/app
+      # PROJECT-gems is a docker volume that will persist your gems for local use
+      # Since ruby gems are just interpreted files, we can persist the folder that they
+      # Contain easily
+      - PROJECT-gems:/usr/local/bundle
+      # Spring volume just so all of the services can take advantage of spring
+      # Needs to be exposed to all of them
+      - PROJECT-spring:/tmp/spring-0
+    tty: true
+    stdin_open: true
+    external_links:
+      - pg-10.3:pg
+
+  spring:
+    <<: *app_base
+    command: spring server
+
+  web:
+    <<: *app_base
+    ports:
+      # Redirect the preferred port on the host to the default port of the app inside the container
+      - "PROJECT_PORT:80"
+    networks:
+      default:
+        aliases:
+          - PROJECT
+
+  spring:
+    <<: *app_base
+    command: spring server
+
+  # Additional services can be added!
+  # example of a sidekiq worker
+  jobs:
+    <<: *app_base
+    command: sidekiq -C config/sidekiq.yml
+
+volumes:
+  PROJECT-gems:
+    external: true
+  PROJECT-spring:
+    external: true

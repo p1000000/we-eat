@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+heroku_app=$1
+CONTAINER_TAG=$2
+heroku_registry="registry.heroku.com/${heroku_app}"
+
+docker pull ${CONTAINER_TAG}
+docker tag ${CONTAINER_TAG} ${heroku_registry}/web
+docker push ${heroku_registry}/web
+heroku container:release web --app ${heroku_app}

@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  base: &app_base
+    image: ${CONTAINER_TAG:-quay.io/wework/PROJECT:master}
+    environment:
+      - DATABASE_URL=postgres://postgres:R0tate1@pg/
+      - RAILS_ENV=test
+    volumes:
+      - ${PWD}:/app
+      - PROJECT-gems:/usr/local/bundle
+      - PROJECT-spring:/tmp/spring-0
+    tty: true
+    stdin_open: true
+
+  spring:
+    <<: *app_base
+    command: spring server
+
+  test:
+    <<: *app_base
+    depends_on:
+      - pg
+    command: bin/rspec
+
+  pg:
+    image: postgres:10.3
+    environment:
+      - POSTGRES_PASSWORD=R0tate1
+      - POSTGRES_DB=PROJECT_test
+
+volumes:
+  PROJECT-gems:
+    external: true
+  PROJECT-spring:
+    external: true

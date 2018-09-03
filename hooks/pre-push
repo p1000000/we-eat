@@ -1,0 +1,5 @@
+#!/bin/sh
+cd .
+
+# Run commands, ensures we block the push if either process finds an issue
+script/exec "annotate && rubocop && brakeman"

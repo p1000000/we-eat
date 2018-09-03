@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/.."
+
+docker-compose up -d spring jobs
+
+command="$@"
+docker-compose run --rm base bash -c "$command"
+docker-compose stop jobs

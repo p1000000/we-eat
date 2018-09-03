@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/../../"
+
+.circleci/docker_login
+
+export CONTAINER_TAG=$(.circleci/full_tag)
+docker volume create --name=PROJECT-gems
+docker volume create --name=PROJECT-spring
+
+docker-compose pull pg test
+docker-compose run test bundle install --with test development
+docker-compose run test rails db:create db:migrate db:setup db:test:prepare
+docker-compose up -d spring

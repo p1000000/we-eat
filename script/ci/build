@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/../.."
+
+docker build . -t $(.circleci/full_tag) --build-arg BUNDLE_ENTERPRISE__CONTRIBSYS__COM=$BUNDLE_ENTERPRISE__CONTRIBSYS__COM
+docker push $(.circleci/full_tag)
+
+if [ "$CIRCLE_BRANCH" = "master" ]; then
+    master_tag="$(.circleci/full_tag)-$(git rev-parse --short HEAD)"
+    docker tag $(.circleci/full_tag) $master_tag
+    docker push $master_tag
+fi

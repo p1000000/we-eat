@@ -1,0 +1,21 @@
+shared: &shared
+  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  reconnect: true
+  connect_timeout: 1
+  pool: <%= ENV['MAX_THREADS'] || 5 %>
+
+development:
+  <<: *shared
+  database: PROJECT_dev
+
+test:
+  <<: *shared
+  database: PROJECT_test
+
+staging:
+  <<: *shared
+
+production:
+  <<: *shared

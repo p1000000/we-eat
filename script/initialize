@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+cd "$(dirname "$0")/.."
+
+PROJECT_NAME=$1
+PROJECT_PORT=$2
+APP_NAME=`echo ${PROJECT_NAME} | perl -pe 's/(^|_)./uc($&)/ge;s/_//g'`
+
+if [ -z "$PROJECT_PORT" ]
+then
+  echo "No port supplied. Usage: script/initialize PROJECT_NAME PROJECT_PORT"
+  exit 1
+fi
+
+if [ -z "$PROJECT_NAME" ]
+then
+  echo "No project name supplied. Usage: script/initialize PROJECT_NAME PROJECT_PORT"
+  exit 1
+fi
+
+find docker-compose.yml -type f -exec perl -pi -e "s/PROJECT_PORT/${PROJECT_PORT}/g" {} \;
+find config/application.rb -type f -exec  perl -pi -e "s/PROJECT/${APP_NAME}/g" {} \;
+find . -type f -not -path "*.git*" -not -path "script/initialize" -exec  perl -pi -e "s/PROJECT/${PROJECT_NAME}/g" {} \;
+
+docker run --rm -v "$PWD":/app -w /app ruby:2.5.1 bundle install
+docker build . -t quay.io/wework/${PROJECT_NAME}:master
+docker push quay.io/wework/${PROJECT_NAME}:master
