@@ -1,0 +1,47 @@
+{
+  "name": "we-eat",
+  "private": true,
+  "engines": {
+    "yarn": ">= 1.0.2",
+    "node": ">=6.11.1"
+   },
+  "dependencies": {
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
+    "@material-ui/lab": "^1.0.0-alpha.8",
+    "@rails/webpacker": "3.5",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "axios": "^0.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-google-maps": "^9.4.5",
+    "react-notifications": "^1.4.3",
+    "react-stars": "^2.2.5",
+    "recompose": "^0.27.1",
+    "styled-components": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.2.0",
+    "eslint-nibble": "^4.2.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "webpack-dev-server": "2.11.2"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}
