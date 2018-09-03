@@ -5,8 +5,8 @@ cd "$(dirname "$0")/../../"
 .circleci/docker_login
 
 export CONTAINER_TAG=$(.circleci/full_tag)
-docker volume create --name=PROJECT-gems
-docker volume create --name=PROJECT-spring
+docker volume create --name=bp_we_eat-gems
+docker volume create --name=bp_we_eat-spring
 
 docker-compose pull pg test
 docker-compose run test bundle install --with test development

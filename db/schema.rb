@@ -10,8 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402152056) do
+ActiveRecord::Schema.define(version: 20180723133515) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string "access_token", null: false
+    t.string "token_owner"
+    t.string "status", default: "active"
+    t.boolean "is_general", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token", "status"], name: "index_api_keys_on_access_token_and_status"
+    t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
+  end
+
+  create_table "cuisines", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.bigint "cuisine_id"
+    t.boolean "accepts_10bis", default: false
+    t.string "address"
+    t.json "coordinates"
+    t.integer "max_delivery_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuisine_id"], name: "index_restaurants_on_cuisine_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "name"
+    t.integer "rating", default: 0
+    t.text "comment"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+  end
+
+  add_foreign_key "restaurants", "cuisines"
+  add_foreign_key "reviews", "restaurants"
 end

@@ -2,14 +2,14 @@ version: '3'
 
 services:
   base: &app_base
-    image: ${CONTAINER_TAG:-quay.io/wework/PROJECT:master}
+    image: ${CONTAINER_TAG:-quay.io/wework/bp_we_eat:master}
     environment:
       - DATABASE_URL=postgres://postgres:R0tate1@pg/
       - RAILS_ENV=test
     volumes:
       - ${PWD}:/app
-      - PROJECT-gems:/usr/local/bundle
-      - PROJECT-spring:/tmp/spring-0
+      - bp_we_eat-gems:/usr/local/bundle
+      - bp_we_eat-spring:/tmp/spring-0
     tty: true
     stdin_open: true
 
@@ -27,10 +27,10 @@ services:
     image: postgres:10.3
     environment:
       - POSTGRES_PASSWORD=R0tate1
-      - POSTGRES_DB=PROJECT_test
+      - POSTGRES_DB=bp_we_eat_test
 
 volumes:
-  PROJECT-gems:
+  bp_we_eat-gems:
     external: true
-  PROJECT-spring:
+  bp_we_eat-spring:
     external: true

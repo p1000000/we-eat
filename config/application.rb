@@ -14,7 +14,7 @@ require 'rails/test_unit/railtie'
 
 Bundler.require(*Rails.groups)
 
-module PROJECT
+module BpWeEat
   class Application < Rails::Application
     config.load_defaults 5.1
     config.api_only = true

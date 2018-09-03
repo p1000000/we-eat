@@ -7,7 +7,7 @@ networks:
 
 services:
   base: &app_base
-    image: ${CONTAINER_TAG:-quay.io/wework/PROJECT:master}
+    image: ${CONTAINER_TAG:-quay.io/wework/bp_we_eat:master}
     # Uncomment to add environment variables
     # env_file: .env
     environment:
@@ -22,13 +22,13 @@ services:
     volumes:
       # this replaces the project folder in the docker image with the current directory
       - ${PWD}:/app
-      # PROJECT-gems is a docker volume that will persist your gems for local use
+      # bp_we_eat-gems is a docker volume that will persist your gems for local use
       # Since ruby gems are just interpreted files, we can persist the folder that they
       # Contain easily
-      - PROJECT-gems:/usr/local/bundle
+      - bp_we_eat-gems:/usr/local/bundle
       # Spring volume just so all of the services can take advantage of spring
       # Needs to be exposed to all of them
-      - PROJECT-spring:/tmp/spring-0
+      - bp_we_eat-spring:/tmp/spring-0
     tty: true
     stdin_open: true
     external_links:
@@ -42,11 +42,11 @@ services:
     <<: *app_base
     ports:
       # Redirect the preferred port on the host to the default port of the app inside the container
-      - "PROJECT_PORT:80"
+      - "3000:80"
     networks:
       default:
         aliases:
-          - PROJECT
+          - bp_we_eat
 
   spring:
     <<: *app_base
@@ -59,7 +59,7 @@ services:
     command: sidekiq -C config/sidekiq.yml
 
 volumes:
-  PROJECT-gems:
+  bp_we_eat-gems:
     external: true
-  PROJECT-spring:
+  bp_we_eat-spring:
     external: true

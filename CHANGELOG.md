@@ -90,7 +90,7 @@ Changes to docker-compose.test.yml, script/setup, and script/test:
 
 ### Nov 13, 2017
 
-- Standardizing use of `PROJECT` instead of `APPLICATION` or `PROJECT`
+- Standardizing use of `bp_we_eat` instead of `APPLICATION` or `bp_we_eat`
 - Ensuring that the Dockerfile uses puma with the `puma.rb` config
 - Cleaned up the `puma.rb` file to ensure the project runs on port 80 by default
 - docker-compose no longer overrides dockerfile for running the web server

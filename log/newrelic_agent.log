@@ -1,0 +1,92 @@
+# Logfile created on 2018-09-03 14:49:05 +0000 by logger.rb/61378
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Starting the New Relic agent version 5.0.0.342 in "development" environment.
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Reading configuration from config/newrelic.yml (/app)
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Environment: development
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Dispatcher: sidekiq
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Application: bp_we_eat (Development)
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] ERROR : Invalid license key: ENV['NEW_RELIC_LICENSE_KEY']
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Net instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Sidekiq instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Redis Instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Typhoeus instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 3+ middleware instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing ActiveJob instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing ActiveRecord 5 instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Bunny instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing deferred Rack::Builder instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Rack::Builder middleware instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 Controller instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 view instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 Action Cable instrumentation
+[2018-09-03 14:49:05 +0000 1f9341f7a5c0 (1)] INFO : Finished instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Starting the New Relic agent version 5.0.0.342 in "development" environment.
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Reading configuration from config/newrelic.yml (/app)
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Environment: development
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : No known dispatcher detected.
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Application: bp_we_eat (Development)
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] ERROR : Invalid license key: ENV['NEW_RELIC_LICENSE_KEY']
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing Net instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing Sidekiq instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing Redis Instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing Typhoeus instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing Rails 3+ middleware instrumentation
+[2018-09-03 14:49:07 +0000 4eeecb12f95f (1)] INFO : Installing ActiveJob instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing ActiveRecord 5 instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing Bunny instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing deferred Rack::Builder instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing Rack::Builder middleware instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing Rails 5 Controller instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing Rails 5 view instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Installing Rails 5 Action Cable instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Finished instrumentation
+[2018-09-03 14:49:08 +0000 4eeecb12f95f (1)] INFO : Doing deferred dependency-detection before Rack startup
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Starting the New Relic agent version 5.0.0.342 in "development" environment.
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Reading configuration from config/newrelic.yml (/app)
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Environment: development
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Dispatcher: sidekiq
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Application: bp_we_eat (Development)
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] ERROR : Invalid license key: ENV['NEW_RELIC_LICENSE_KEY']
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Net instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Sidekiq instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Redis Instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Typhoeus instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 3+ middleware instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing ActiveJob instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing ActiveRecord 5 instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Bunny instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing deferred Rack::Builder instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Rack::Builder middleware instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 Controller instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 view instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Starting the New Relic agent version 5.0.0.342 in "development" environment.
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Reading configuration from config/newrelic.yml (/app)
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Environment: development
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Dispatcher: puma
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Application: bp_we_eat (Development)
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] ERROR : Invalid license key: ENV['NEW_RELIC_LICENSE_KEY']
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Net instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Sidekiq instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Redis Instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Typhoeus instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Rails 3+ middleware instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing ActiveJob instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Installing Rails 5 Action Cable instrumentation
+[2018-09-03 14:49:25 +0000 1f9341f7a5c0 (1)] INFO : Finished instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing ActiveRecord 5 instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Bunny instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing deferred Rack::Builder instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Rack::Builder middleware instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Rails 5 Controller instrumentation
+[2018-09-03 14:49:25 +0000 31ba99a84443 (8)] INFO : Installing Rails 5 view instrumentation
+[2018-09-03 14:49:26 +0000 31ba99a84443 (8)] INFO : Installing Rails 5 Action Cable instrumentation
+[2018-09-03 14:49:26 +0000 31ba99a84443 (8)] INFO : Finished instrumentation
+[2018-09-03 14:49:26 +0000 31ba99a84443 (8)] INFO : Doing deferred dependency-detection before Rack startup
+[2018-09-03 14:49:40 +0000 31ba99a84443 (8)] ERROR : Invalid license key, please contact support@newrelic.com
+[2018-09-03 14:49:40 +0000 31ba99a84443 (8)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2018-09-03 14:51:09 +0000 31ba99a84443 (8)] INFO : Starting Agent shutdown

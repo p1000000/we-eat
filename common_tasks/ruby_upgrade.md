@@ -10,7 +10,7 @@ For the purposes of this file `VERSION` will refer to the ruby version you are u
 1. Run `docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app ruby:VERSION bundle update --ruby`
 1. Verify that your new docker build succeeds.
 
-For the last step, I recommend tagging the new image as `PROJECT:local` and then run `export CONTAINER_TAG=PROJECT` in your local shell that you are testing your application in. Then you can run through your test suite and do manual testing to ensure that your application still runs properly.
+For the last step, I recommend tagging the new image as `bp_we_eat:local` and then run `export CONTAINER_TAG=bp_we_eat` in your local shell that you are testing your application in. Then you can run through your test suite and do manual testing to ensure that your application still runs properly.
 
 ### Minor (and presumably major) Version Upgrades
 

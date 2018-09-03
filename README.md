@@ -22,7 +22,7 @@ docker-compose up
 To get started:
 
 1. Clone this repo (be sure to change the remote origin!): `git clone git@github.com:WeConnect/mission-4-rails-template.git`
-1. Run `script/initialize PROJECT_NAME PROJECT_PORT` to replace the references to `PROJECT` to your cool app name and `PROJECT_PORT` to the external port of the app. Example: `script/initialize snake_case 5001`. This will also take care of the Application name in `application.rb` to be `CamelCase`, and will create the initial docker image.
+1. Run `script/initialize bp_we_eat_NAME bp_we_eat_PORT` to replace the references to `bp_we_eat` to your cool app name and `bp_we_eat_PORT` to the external port of the app. Example: `script/initialize snake_case 5001`. This will also take care of the Application name in `application.rb` to be `CamelCase`, and will create the initial docker image.
 1. Modify all of the `script/` and `docker-compose.*` files to suit your project's needs
 1. Run `script/setup` to install your needed gems, create the database(s) and other needs
 1. Run `script/exec rake secret` to generate a `SECRET_KEY_BASE` secret and store it in your heroku environment variables.
@@ -67,12 +67,12 @@ To use run `script/exec bundle install` for example.
 
 ### Docker
 
-Our main (RoR) image is hosted on [Quay](https://quay.io/repository/wework/PROJECT))
+Our main (RoR) image is hosted on [Quay](https://quay.io/repository/wework/bp_we_eat))
 ### Deployment
 
 The configuration for Docker is handled using [docker-compose](https://docs.docker.com/compose/overview/). Update the file(s) to suite your particular team's needs.
 
-[Quay](https://quay.io/repository/wework/PROJECT) is where you can see our tags, builds, and hooks.
+[Quay](https://quay.io/repository/wework/bp_we_eat) is where you can see our tags, builds, and hooks.
 
 CircleCi configuration deploys the containers to staging on every merge to staging, and to production on every merge to master.
 

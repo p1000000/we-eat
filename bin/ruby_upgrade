@@ -3,8 +3,8 @@ set -e
 cd "$(dirname "$0")/.."
 
 docker-compose down --remove-orphans
-docker volume rm PROJECT-gems
-docker volume create --name=PROJECT-gems
+docker volume rm bp_we_eat-gems
+docker volume create --name=bp_we_eat-gems
 docker-compose run base bundle config --local without "production"
 docker-compose run base bundle config --delete frozen
 docker-compose run base bundle install --jobs 32
