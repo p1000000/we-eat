@@ -2,8 +2,8 @@
 set -e
 cd "$(dirname "$0")/.."
 
-docker-compose up -d spring jobs
+docker-compose up -d pg redis rabbitmq spring jobs delivery_listener
 
 command="$@"
 docker-compose run --rm base bash -c "$command"
-docker-compose stop jobs
+docker-compose stop jobs delivery_listener

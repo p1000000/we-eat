@@ -12,6 +12,7 @@ ruby '2.5.1'
 
 # gem 'awesome_print'
 gem 'bunny'
+gem 'deliveries_manager', path: 'engines/deliveries_manager'
 gem 'le'
 gem 'newrelic_rpm'
 gem 'pg'

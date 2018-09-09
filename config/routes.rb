@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     [user, password] == [ENV['SIDEKIQ_USERNAME'], ENV['SIDEKIQ_PASSWORD']]
   end
   mount Sidekiq::Web => '/sidekiq'
+  
+  namespace :deliveries_manager do
+    resources :deliveries, only: [:index, :show, :create]
+  end
 end
