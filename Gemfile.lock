@@ -1,3 +1,9 @@
+PATH
+  remote: engines/deliveries_manager
+  specs:
+    deliveries_manager (0.1.0)
+      rails (~> 5.1.5)
+
 GEM
   remote: https://rubygems.org/
   remote: https://azsZx4s2wmt78X2W8iA8@gem.fury.io/wework-dev/
@@ -231,6 +237,7 @@ DEPENDENCIES
   bunny
   byebug
   database_cleaner (~> 1.7.0)
+  deliveries_manager!
   dotenv-rails
   dotenv-sync
   factory_bot_rails

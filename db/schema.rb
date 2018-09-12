@@ -25,4 +25,5 @@ ActiveRecord::Schema.define(version: 20180410084306) do
     t.index ["access_token", "status"], name: "index_api_keys_on_access_token_and_status"
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
   end
+
 end
