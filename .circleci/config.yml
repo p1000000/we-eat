@@ -5,13 +5,13 @@ defaults:
         - image: circleci/buildpack-deps
     environment:
         - DOCKER_REGISTRY: 'quay.io/wework'
-        - DOCKER_REPOSITORY: 'quay.io/wework/PROJECT'
+        - DOCKER_REPOSITORY: 'quay.io/wework/bp-we-eat'
   machine_config: &machine_config
     machine: true
     environment:
       - COMPOSE_FILE: 'docker-compose.test.yml'
       - DOCKER_REGISTRY: 'quay.io/wework'
-      - DOCKER_REPOSITORY: 'quay.io/wework/PROJECT'
+      - DOCKER_REPOSITORY: 'quay.io/wework/bp-we-eat'
 jobs:
   build:
     <<: *docker_config
