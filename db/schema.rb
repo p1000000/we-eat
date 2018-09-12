@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180723133515) do
+ActiveRecord::Schema.define(version: 20180410084306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,36 +25,4 @@ ActiveRecord::Schema.define(version: 20180723133515) do
     t.index ["access_token", "status"], name: "index_api_keys_on_access_token_and_status"
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true
   end
-
-  create_table "cuisines", force: :cascade do |t|
-    t.string "name"
-    t.string "icon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.bigint "cuisine_id"
-    t.boolean "accepts_10bis", default: false
-    t.string "address"
-    t.json "coordinates"
-    t.integer "max_delivery_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cuisine_id"], name: "index_restaurants_on_cuisine_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.string "name"
-    t.integer "rating", default: 0
-    t.text "comment"
-    t.bigint "restaurant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
-  end
-
-  add_foreign_key "restaurants", "cuisines"
-  add_foreign_key "reviews", "restaurants"
 end
