@@ -7,7 +7,7 @@ networks:
 
 services:
   base: &app_base
-    image: ${CONTAINER_TAG:-quay.io/wework/bp_we_eat:master}
+    image: ${CONTAINER_TAG:-quay.io/wework/bp-we-eat:master}
     # Uncomment to add environment variables
     # env_file: .env
     environment:
@@ -22,13 +22,13 @@ services:
     volumes:
       # this replaces the project folder in the docker image with the current directory
       - ${PWD}:/app
-      # bp_we_eat-gems is a docker volume that will persist your gems for local use
+      # bp-we-eat-gems is a docker volume that will persist your gems for local use
       # Since ruby gems are just interpreted files, we can persist the folder that they
       # Contain easily
-      - bp_we_eat-gems:/usr/local/bundle
+      - bp-we-eat-gems:/usr/local/bundle
       # Spring volume just so all of the services can take advantage of spring
       # Needs to be exposed to all of them
-      - bp_we_eat-spring:/tmp/spring-0
+      - bp-we-eat-spring:/tmp/spring-0
     tty: true
     stdin_open: true
 
@@ -44,7 +44,7 @@ services:
     networks:
       default:
         aliases:
-          - bp_we_eat
+          - bp-we-eat
 
   spring:
     <<: *app_base
@@ -81,7 +81,7 @@ services:
       - ${HOME}/.we-data/redis-4-data:/data
 
 volumes:
-  bp_we_eat-gems:
+  bp-we-eat-gems:
     external: true
-  bp_we_eat-spring:
+  bp-we-eat-spring:
     external: true

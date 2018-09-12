@@ -8,11 +8,11 @@ shared: &shared
 
 development:
   <<: *shared
-  database: bp_we_eat_dev
+  database: bp-we-eat_dev
 
 test:
   <<: *shared
-  database: bp_we_eat_test
+  database: bp-we-eat_test
 
 staging:
   <<: *shared

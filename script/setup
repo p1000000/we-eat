@@ -13,9 +13,9 @@ else
     echo 'Created local docker network'
 fi
 
-docker volume rm bp_we_eat-gems &> /dev/null || /usr/bin/true
-docker volume create --name=bp_we_eat-gems
-docker volume create --name=bp_we_eat-spring
+docker volume rm bp-we-eat-gems &> /dev/null || /usr/bin/true
+docker volume create --name=bp-we-eat-gems
+docker volume create --name=bp-we-eat-spring
 
 docker-compose run base bundle config --local without "production"
 docker-compose run base bundle config --delete frozen
