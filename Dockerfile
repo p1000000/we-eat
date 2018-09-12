@@ -14,11 +14,11 @@ WORKDIR /app
 # ENV BUNDLE_ENTERPRISE__CONTRIBSYS__COM=$BUNDLE_ENTERPRISE__CONTRIBSYS__COM
 
 COPY Gemfile* /app/
+COPY . /app
 
 # Similar to --no-deployment, but we don't want to vendor the gems
 RUN bundle config --local frozen 1
 RUN bundle install --jobs 32 --without test development
 
-COPY . /app
 
 CMD puma -C /app/config/puma.rb

@@ -1,5 +1,5 @@
 PATH
-  remote: engines/deliveries_manager
+  remote: lib/deliveries_manager
   specs:
     deliveries_manager (0.1.0)
       rails (~> 5.1.5)
