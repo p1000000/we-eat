@@ -63,7 +63,7 @@ services:
     ports:
       - "5103:5432"
     volumes:
-      - ${HOME}/.we-data/pg-10-data:/var/lib/postgresql/data
+      - ${HOME}/.we-data/pg-10-data/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=R0tate1
 
