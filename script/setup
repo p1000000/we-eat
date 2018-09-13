@@ -21,6 +21,8 @@ docker-compose run base bundle config --local without "production"
 docker-compose run base bundle config --delete frozen
 script/bootstrap
 
+
+docker-compose up -d pg spring
 docker-compose run base rails db:create db:migrate db:setup
 
 docker-compose -f docker-compose.test.yml up -d pg spring
