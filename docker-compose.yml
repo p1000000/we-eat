@@ -34,19 +34,23 @@ services:
     tty: true
     stdin_open: true
 
-  spring:
-    <<: *app_base
-    command: spring server
-
-  web:
+  backend:
     <<: *app_base
     ports:
-      # Redirect the preferred port on the host to the default port of the app inside the container
-      - "3000:80"
+    - "5000:80"
     networks:
       default:
         aliases:
-          - bp-we-eat
+        - bp-we-eat
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    expose:
+    - 4000
+    ports:
+    - "4000:3000"
 
   spring:
     <<: *app_base
