@@ -24,7 +24,7 @@ services:
     command: bin/rspec
 
   pg:
-    image: postgres:10.3
+    image: postgres:10.5
     environment:
       - POSTGRES_PASSWORD=R0tate1
       - POSTGRES_DB=bp-we-eat_test
