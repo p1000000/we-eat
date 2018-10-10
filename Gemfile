@@ -19,14 +19,6 @@ gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'sidekiq'
-gem 'we-call'
-
-source 'https://azsZx4s2wmt78X2W8iA8@gem.fury.io/wework-dev' do
-  gem 'we-error'
-  gem 'we-response'
-  gem 'we-tokenable'
-  gem 'we-util-pubsub'
-end
 
 group :development do
   gem 'annotate'
