@@ -10,7 +10,7 @@ import Slider from '@material-ui/lab/Slider';
 
 import ReactStars from 'react-stars';
 
-import tenbis_logo from "../../../../assets/images/10bis-logo.png";
+import tenbis_logo from "../../images/10bis-logo.png";
 
 const FilterWrapper = styled("div")`
   height: 100px;

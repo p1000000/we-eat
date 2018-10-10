@@ -47,7 +47,7 @@ ReviewList.propTypes = {
 };
 
 ReviewList.defaultProps = {
-  revies: []
+  reviews: []
 };
 
 export default ReviewList;

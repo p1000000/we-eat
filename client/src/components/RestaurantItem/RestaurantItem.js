@@ -18,7 +18,7 @@ import ReviewList from "../ReviewList";
 import ReviewForm from "../ReviewForm";
 import withTooltip from "../withTooltip";
 
-import tenbis_logo from "../../../../assets/images/10bis-logo.png";
+import tenbis_logo from "../../images/10bis-logo.png";
 
 const StyledListItem = styled(ListItem)`
   justify-content: space-between !important;

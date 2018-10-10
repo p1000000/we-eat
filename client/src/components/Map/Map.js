@@ -14,9 +14,9 @@ class Map extends React.Component {
   _getAnimation = coordinates => {
     const { center } = this.props;
     if (coordinates.lng === center.lng && coordinates.lat === center.lat) {
-      return google.maps.Animation.BOUNCE;
+      return this.props.google.maps.Animation.BOUNCE;
     }
-    return google.maps.Animation.DROP;
+    return this.props.google.maps.Animation.DROP;
   };
 
   _renderMarkers = () => this.props.locations.map((location, index) => {
