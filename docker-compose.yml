@@ -19,6 +19,8 @@ services:
       # if you want to talk to something on the host
       # you can use this as the url (replacing `localhost`):
       # `host.docker.internal`
+      - NEW_RELIC_AGENT_ENABLED=false
+      - REDIS_URL=redis://redis:6379
     volumes:
       # this replaces the project folder in the docker image with the current directory
       - ${PWD}:/app
