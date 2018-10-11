@@ -59,7 +59,7 @@ This site allows you to view and filter restaurant by decision-critical paramete
 
 ### External Resources
 * [Ruby on Rails](https://connect.we.co/display/DIGI/Technical+Resources#TechnicalResources-ROR) - first 10 chapters of the 'Pragmatic Programmer' book.
-* RSpec - Read the linked 3-part Blog post which explains the main concepts for RSpec and Behavior-Driven Testing. ==TODO LINK MISSING==
+* [RSpec](https://blog.teamtreehouse.com/an-introduction-to-rspec) - Read the linked 3-part Blog post which explains the main concepts for RSpec and Behavior-Driven Testing.
 * [Sidekiq](https://github.com/mperham/sidekiq/wiki) - Background task processing
 * [Docker](https://docs.docker.com/) - Our services run in docker, including their infrastructure. Get familiar with docker and docker compose
 * [Postman](https://app.getpostman.com/app/download/osx64) - this app allowing us to send HTTP requests directly to the server.
