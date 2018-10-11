@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 102a768852869f87286308cee3e3b30552b3f86d
+  branch: master
+  specs:
+    faker (1.9.1)
+      i18n (>= 0.7)
+
 PATH
   remote: lib/deliveries_manager
   specs:
@@ -73,8 +81,6 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    faker (1.9.1)
-      i18n (>= 0.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.5)
@@ -208,7 +214,7 @@ DEPENDENCIES
   dotenv-rails
   dotenv-sync
   factory_bot_rails
-  faker
+  faker!
   le
   newrelic_rpm
   pg
