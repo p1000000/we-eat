@@ -3,9 +3,13 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :restaurants, only: :index
-  resources :cuisines, only: :index
-  resources :reviews, only: :create
+  scope :api do
+    scope 'v1.0' do
+      resources :restaurants, only: :index
+      resources :cuisines, only: :index
+      resources :reviews, only: :create
+    end
+  end
 
   root 'pages#index'
 
