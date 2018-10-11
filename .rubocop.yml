@@ -4,6 +4,7 @@ inherit_from:
 
 AllCops:
   CacheRootDirectory: tmp/rubocop
+  TargetRubyVersion: 2.5
   Exclude:
     - 'vendor/**/*'
     - 'node_modules/**/*'
