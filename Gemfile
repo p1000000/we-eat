@@ -19,14 +19,6 @@ gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'sidekiq'
-gem 'we-call'
-
-source 'https://azsZx4s2wmt78X2W8iA8@gem.fury.io/wework-dev' do
-  gem 'we-error'
-  gem 'we-response'
-  gem 'we-tokenable'
-  gem 'we-util-pubsub'
-end
 
 group :development do
   gem 'annotate'
@@ -36,7 +28,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.7.0'
   gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master' # Error while generating data
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'spring-commands-rspec'

@@ -11,8 +11,12 @@ injectGlobal`
 `;
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.body.appendChild(document.createElement('div')),
-  )
+    ReactDOM.render(
+        <App />,
+        document.body.appendChild(document.createElement('div')),
+    )
 })
+
+
+// import registerServiceWorker from './registerServiceWorker';
+//registerServiceWorker();

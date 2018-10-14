@@ -24,10 +24,20 @@ services:
     command: bin/rspec
 
   pg:
-    image: postgres:10.3
+    image: postgres:10.5
     environment:
       - POSTGRES_PASSWORD=R0tate1
       - POSTGRES_DB=bp-we-eat_test
+
+  # Because you should care about security
+  brakeman:
+    <<: *app_base
+    command: brakeman -o brakeman-output.html
+
+  # Because we all have opinions about code
+  rubocop:
+    <<: *app_base
+    command: rubocop -f html -o rubocop.html
 
 volumes:
   bp-we-eat-gems:

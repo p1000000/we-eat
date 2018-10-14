@@ -1,0 +1,10 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+  - .rubocop_overrides.yml
+
+AllCops:
+  CacheRootDirectory: tmp/rubocop
+  Exclude:
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'

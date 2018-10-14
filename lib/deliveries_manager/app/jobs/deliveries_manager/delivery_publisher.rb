@@ -5,7 +5,7 @@ module DeliveriesManager
     include Sidekiq::Worker
     sidekiq_options backtrace: true, queue: :deliveries
 
-    def perform(uuid = nil)
+    def perform(uuid: nil)
       delivery = Delivery.delivery_statuses(uuid: uuid || Delivery.create.id)
       statuses = apply_noise_to_delivery(delivery)
 

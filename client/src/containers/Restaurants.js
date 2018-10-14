@@ -83,7 +83,7 @@ class restaurants extends React.Component {
   });
 
   _getRestaurants = () => this._promiseWrapper(
-    '/restaurants',
+    '/api/v1.0/restaurants',
     (data) => {
       this.setState({
         restaurants: data.map(restaurant => (
@@ -101,7 +101,7 @@ class restaurants extends React.Component {
   );
 
   _getCuisines = () => this._promiseWrapper(
-    '/cuisines',
+    '/api/v1.0/cuisines',
     (data) => {
       this.setState({
         cuisines: data
@@ -128,7 +128,7 @@ class restaurants extends React.Component {
   _addReview = (review) => {
     asyncRequest({
       method: "post",
-      url: "/reviews",
+      url: "/api/v1.0/reviews",
       data: {
         review
       }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'database_cleaner'
+require 'sidekiq/testing'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -15,6 +16,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation, except: %w(ar_internal_metadata)
+    Sidekiq::Testing.inline! # runs the job immediately instead of enqueuing it
   end
 
   config.before(:each) do

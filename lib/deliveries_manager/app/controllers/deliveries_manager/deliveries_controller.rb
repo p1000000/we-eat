@@ -12,7 +12,7 @@ module DeliveriesManager
 
     def create
       delivery = Delivery.create(name: params[:name])
-      DeliveryPublisher.perform_async(delivery.id)
+      DeliveryPublisher.perform_async(uuid: delivery.id)
       render json: Delivery.find(uuid: delivery.id)
     end
   end

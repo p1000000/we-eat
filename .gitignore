@@ -17,6 +17,7 @@
 /setup
 .idea/
 .byebug_history
+*/node_modules
 
 # Dotenv syncing
 .env.local

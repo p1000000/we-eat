@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from 'styled-components';
 
-import hero from "../../../assets/images/hero.jpg";
+import hero from "../images/hero.jpg";
 
 const StyledHero = styled("div")`
   position: relative;

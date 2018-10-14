@@ -13,6 +13,7 @@ class Map extends React.Component {
 
   _getAnimation = coordinates => {
     const { center } = this.props;
+    const google = window.google; // https://github.com/tomchentw/react-google-maps/issues/434
     if (coordinates.lng === center.lng && coordinates.lat === center.lat) {
       return google.maps.Animation.BOUNCE;
     }

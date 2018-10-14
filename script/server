@@ -2,6 +2,6 @@
 set -e
 cd "$(dirname "$0")/.."
 
-docker-compose up -d pg redis rabbitmq spring web jobs delivery_listener
-docker attach $(docker-compose ps -q web)
-docker-compose stop web jobs delivery_listener
+docker-compose up -d pg redis rabbitmq spring backend frontend jobs delivery_listener
+docker attach $(docker-compose ps -q backend)
+docker-compose stop backend frontend jobs delivery_listener

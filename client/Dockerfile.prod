@@ -1,0 +1,14 @@
+# Ref: https://hackernoon.com/so-you-want-to-dockerize-your-react-app-64fbbb74c217
+
+# stage 1: build the app
+FROM node:10.9.0 as react-build
+WORKDIR /client
+COPY . ./
+RUN yarn
+RUN yarn build
+
+# stage 2: serve to app
+ FROM nginx:alpine
+COPY --from=react-build /client/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

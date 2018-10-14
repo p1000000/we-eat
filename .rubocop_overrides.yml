@@ -1,0 +1,48 @@
+# Overrides
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: ()
+    "%i": ()
+    "%w": ()
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+
+Airbnb/SimpleModifierConditional:
+  Enabled: false
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Metrics/LineLength:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: true
+
+Airbnb/RspecDescribeOrContextUnderNamespace:
+  Enabled: false
+  
+RSpec/ExpectInHook:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false

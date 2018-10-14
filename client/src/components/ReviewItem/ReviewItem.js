@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 import ReactStars from 'react-stars';
 
-import tenbis_logo from "../../../../assets/images/10bis-logo.png";
+import tenbis_logo from "../../images/10bis-logo.png";
 
 const StyledListItem = styled(ListItem)`
   border-color: rgba(255,95,126,0.4) !important;
