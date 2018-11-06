@@ -6,7 +6,7 @@ module DeliveriesManager
     sidekiq_options backtrace: true, queue: :deliveries
 
     def perform(message)
-      conn = Bunny.new
+      conn = Bunny.new(ENV['RABBIT_URL'])
       conn.start
       ch = conn.create_channel
       queue = ch.queue('delivery.status_updated', auto_delete: true)

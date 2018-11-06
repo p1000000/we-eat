@@ -6,6 +6,7 @@ To get started:
 
 1. Clone this repo (be sure to change the remote origin!): `git clone git@github.com:WeConnect/mission-4-we-eat-template.git`
 1. Run `script/setup` to install your needed gems, create the database(s) and other needs
+(You will need docker installed and Quay access for this step)
 
 ## Scripts to Rule Them All
 
@@ -25,12 +26,21 @@ Run test on docker:
 script/test
 ```
 
+
 ### Arbitrary command
 
 We added an additional command, `script/exec` to allow you to interact with the code with the full "rails-y" context. This command is how you can run your usual migrations and gem upgrades.
 
 To use run `script/exec bundle install` for example.
 
+#### Using exec for code analysis
+Another example use: You can run the following command to manually perform code analysis of your project:
+`'script/exec "annotate && rubocop && brakeman"`
+
+(annotate will comment your classes with useful information, rubocop is a linter for ruby and will report any style errors, brakeman analyses security issues in your code)
+
+
+This command also runs automatically on `git push` via a script found under `/hooks/pre-push`
 ## Deployment
 
 The configuration for Docker is handled using [docker-compose](https://docs.docker.com/compose/overview/). Update the file(s) to suite your particular team's needs.  
@@ -39,7 +49,7 @@ The configuration for Docker is handled using [docker-compose](https://docs.dock
 
 ## Environment Variables
 
-Environment variables are set in [Heroku](https://www.heroku.com/)
+Environment variables are set in [Heroku](https://www.heroku.com/) (Deprecated ?)
 
 # Part 2: Learn Our Stack
 
@@ -76,8 +86,8 @@ This site allows you to view and filter restaurant by decision-critical paramete
 ## Setup The Project
 The project will consist of the following components: 
 
-1. Existing react client.
-1. Existing delivery management rails engine, which can be communicated with via rabbitmq
+1. Existing react client. (Found under `/client`)
+1. Existing delivery management rails engine, which can be communicated with via rabbitmq (Found under `/lib/delivery_manager`)
 1. Main project - the main logic component that you would work on
 	1. Restful API that exposes the main entities (Restaurants, Reviews etc.).
 	1. RabbitMq subscriber that receives the events on the orders
@@ -96,6 +106,7 @@ For each entity, implement the following:
 Tips:
 
 * Use [this gem](https://github.com/ctran/annotate_models) to auto-document your models
+* To enable debugging inside RubyMine using docker-compose follow instructions [here](https://blog.jetbrains.com/ruby/2017/05/rubymine-2017-2-eap-1-docker-compose/)
 
 #### 1. Restaurants
 A restaurant consists of:
@@ -132,7 +143,8 @@ Use RSpec to test the models and controllers.
 Suggestion: grab someone who has RSpec experience and get an overview.
 
 #### Apis
-Provided is the current's client api expected request/response. **Feel free to change it to meet your needs.**
+Provided is the current's client api expected request/response. 
+**You shouldnt technically have to make any changes to the client, but feel free to do so if you feel like it**
 
 **GET /api/v1.0/restaurants**
 
@@ -181,6 +193,19 @@ Provided is the current's client api expected request/response. **Feel free to c
 			}
 		]
 
+**GET /api/v1.0/reviews**
+
+	Response:
+	Status: 200
+	Content-type: 'application/json;
+	Body:
+		[
+			{
+				name: string,
+				rating: number,
+				comment: string
+			}
+		]
 
 
 ### Part 2: Import Restaurants And Reviews Using API
@@ -211,24 +236,16 @@ You would listen to the Mq and process the orders asynchronously using [sidekiq]
 The orders can get to you not in chronicle order, each event will have a status and could have different fields.
 
 #### Directions
-* Don't forget to have your app listening to the **same queue** the orders app is publishing to.
-* Save the order events to the DB when you receive them
+* On the WeEat website an "ORDER" button exists on every restaurant. Submitting an order through it will trigger a new delivery flow, this will cause delivery status payloads to be sent on the queue.
+* Create a RabbitMQ listener for a queue named: 'delivery.status_updated', this queue will be receiving delivery status payloads which you will need to process.
 * Call the order processor - the sidekiq worker in charge of processing orders
-* Process the order - you should save the merged order and keep the most advanced status.
+* Process the order - Save the order to the DB when you receive a status payload. Notice that you should save the merged order and keep the most advanced status.
 
 #### Messaging details
 Here are some tips on how to get started.
 ##### Bunny How To
-Bunny is the gem that communicates with Rabbitmq. Here's a quick how to, to create your first publisher and listener
+Bunny is the gem that communicates with Rabbitmq. A listener using Rabbit looks like the following:
 
-Sending event:
-
-	conn = Bunny.new
-	conn.start
-	ch = conn.create_channel
-	queue = ch.queue(<TOPIC>, auto_delete: true)
-	exchange = ch.default_exchange
-	exchange.publish(message, routing_key: queue.name)
 
 Reading event:
 
@@ -241,10 +258,8 @@ Reading event:
 	  # DO STUFF
 	end
 
-##### Sending command
-Publish a message to the `delivery.create` topic with the following payload: `{ name: <NAME> }`.
+##### DeliveryManager Payloads
 
-##### Payloads
 The delivery service publishes these messages, in this order (if all goes well, that is), to the `delivery.status_updated` topic:
 
 ```
@@ -309,7 +324,7 @@ The delivery service publishes these messages, in this order (if all goes well, 
 }
 ```
 
-### Part 4: Deployment
+### Part 4: Deployment (Deprecated - Consult Buddy before proceeding)
 *Topics: Heroku + toolbelt*
 
 Create a server for deploying the app. Make sure you keep your server up-to-date.  
