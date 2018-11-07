@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {notify} from 'react-notify-toast';
 
 import Hero from "../components/Hero";
 import RestaurantList from "../components/RestaurantList";
@@ -125,6 +126,17 @@ class restaurants extends React.Component {
     }
   };
 
+  _createOrder = (restaurant_name, customer_name) => {
+    asyncRequest({
+        method: "post",
+        url: "/api/v1.0/deliveries_manager/deliveries?name=" + customer_name
+    }).then(() => {
+        notify.show("Your Order from " + restaurant_name + " is on the way!", "success");
+    }).catch(e => {
+        notify.show("Oops, something went wrong. Order was not received, try again later.", "error");
+    });
+  };
+
   _addReview = (review) => {
     asyncRequest({
       method: "post",
@@ -156,11 +168,7 @@ class restaurants extends React.Component {
         }
       ));
     }).catch(e => {
-      this._createNotification({
-        type: "error",
-        title: "Review Not Added",
-        message: "Something went wrong :("
-      });
+        notify.show('Review Not Added', 'error');
       console.log(e);
     });
   };
@@ -174,6 +182,7 @@ class restaurants extends React.Component {
       <RestaurantList
         restaurants={restaurants}
         addReview={this._addReview}
+        createOrder={this._createOrder}
         onSelect={this._onRestaurantSelect}
       />
     </ListWrapper>

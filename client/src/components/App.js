@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
-
 import Restaurants from "../containers/Restaurants";
+import Notifications from 'react-notify-toast';
 
 // import Vegan from '../../public/fonts/vegan.ttf';
 
@@ -18,6 +18,7 @@ injectGlobal`
 
 export default () => (
   <div>
-    <Restaurants />
+      <Notifications />
+      <Restaurants />
   </div>
 );

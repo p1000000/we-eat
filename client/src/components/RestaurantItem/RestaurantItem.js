@@ -11,11 +11,13 @@ import Modal from '@material-ui/core/Modal';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import AddComment from '@material-ui/icons/AddComment';
+import Button from '@material-ui/core/Button';
 
 import ReactStars from 'react-stars';
 
 import ReviewList from "../ReviewList";
 import ReviewForm from "../ReviewForm";
+import OrderForm from "../OrderForm/OrderForm";
 import withTooltip from "../withTooltip";
 
 import tenbis_logo from "../../images/10bis-logo.png";
@@ -23,6 +25,15 @@ import tenbis_logo from "../../images/10bis-logo.png";
 const StyledListItem = styled(ListItem)`
   justify-content: space-between !important;
 `;
+
+const OrderdButton = styled("button")`
+  color: rgb(55, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justifyContent: 'center',
+  alignItems: 'center'
+`;
+
 
 const Details = styled("div")`
   display: flex;
@@ -66,9 +77,10 @@ const ExpandWrapper = styled("div")`
   cursor: pointer;
 `;
 
+
 const Buttons = styled("div")`
   display: flex;
-  width: 75px;
+  width: 125px;
   justify-content: space-between;
 `;
 
@@ -104,7 +116,8 @@ const Content = styled("div")`
 class RestaurantItem extends React.Component {
   state = {
     isOpen: false,
-    reviewFormOpen: false
+    reviewFormOpen: false,
+    orderFormOpen: false
   };
 
   _renderTenbis = accepts_10bis => {
@@ -197,6 +210,10 @@ class RestaurantItem extends React.Component {
     reviewFormOpen: !reviewFormOpen
   }));
 
+  _toggleOrderModal = () => this.setState(({ orderFormOpen }) => ({
+      orderFormOpen: !orderFormOpen
+  }));
+
   _onSelect = () => {
     this.props.onSelect(this.props.coordinates);
   };
@@ -205,6 +222,9 @@ class RestaurantItem extends React.Component {
     if (!this.props.compact) {
       return (
         <Buttons>
+          {withTooltip(
+              <OrderdButton variant="contained" onClick={this._toggleOrderModal}> ORDER </OrderdButton>
+          , "ORDER")}
           {withTooltip(
             (
               <StyledAddComment
@@ -260,7 +280,12 @@ class RestaurantItem extends React.Component {
     this._toggleReviewModal();
   };
 
-  _renderModal = () => (
+  _onOrder = (customer_name) => {
+      this._toggleOrderModal();
+      this.props.createOrder(this.props.name, customer_name);
+  };
+
+  _renderReviewFormModal = () => (
     <Modal
       open={this.state.reviewFormOpen}
       onClose={this._toggleReviewModal}
@@ -275,12 +300,28 @@ class RestaurantItem extends React.Component {
     </Modal>
   );
 
+  _renderOrderFormModal = () => (
+    <Modal
+      open={this.state.orderFormOpen}
+      onClose={this._toggleOrderModal}
+    >
+      <ModalContent>
+        <OrderForm
+          restaurantName={this.props.name}
+          onOrder={this._onOrder}
+          onCancel={this._toggleOrderModal}
+        />
+      </ModalContent>
+    </Modal>
+  );
+
   _renderRestaurantItem = () => {
     return (
       <div>
         {this._renderListItem()}
         {this._renderReviews()}
-        {this._renderModal()}
+        {this._renderReviewFormModal()}
+        {this._renderOrderFormModal()}
       </div>
     );
   };
@@ -300,6 +341,7 @@ RestaurantItem.propTypes = {
   accepts_10bis: PropTypes.bool,
   coordinates: PropTypes.object,
   addReview: PropTypes.func,
+  createOrder: PropTypes.func,
   onSelect: PropTypes.func,
   compact: PropTypes.bool
 };
@@ -314,6 +356,7 @@ RestaurantItem.defaultProps = {
   accepts_10bis: false,
   coordinates: {},
   addReview: () => {},
+  createOrder: () => {},
   onSelect: () => {},
   compact: false
 };
