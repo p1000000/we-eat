@@ -35,21 +35,11 @@ To use run `script/exec bundle install` for example.
 
 #### Using exec for code analysis
 Another example use: You can run the following command to manually perform code analysis of your project:
-`'script/exec "annotate && rubocop && brakeman"`
+`script/exec "annotate && rubocop && brakeman"`
 
 (annotate will comment your classes with useful information, rubocop is a linter for ruby and will report any style errors, brakeman analyses security issues in your code)
 
-
 This command also runs automatically on `git push` via a script found under `/hooks/pre-push`
-## Deployment
-
-The configuration for Docker is handled using [docker-compose](https://docs.docker.com/compose/overview/). Update the file(s) to suite your particular team's needs.  
-[Quay](https://quay.io/repository/wework/) is where you can see our tags, builds, and hooks.  
-[CircleCi](https://circleci.com/) configuration deploys the containers to staging on every merge to staging, and to production on every merge to master.
-
-## Environment Variables
-
-Environment variables are set in [Heroku](https://www.heroku.com/) (Deprecated ?)
 
 # Part 2: Learn Our Stack
 
@@ -323,22 +313,6 @@ The delivery service publishes these messages, in this order (if all goes well, 
   signed_by: 'Miss Hayley Becker'
 }
 ```
-
-### Part 4: Deployment (Deprecated - Consult Buddy before proceeding)
-*Topics: Heroku + toolbelt*
-
-Create a server for deploying the app. Make sure you keep your server up-to-date.  
-*Note*: You'll probably need to replace yarn with npm (Heroku currently doesn't support yarn well enough)  
-See additional instructions [here](https://connect.we.co/display/DIGI/WeEat+-+Heroku+Setup).   
-[Heroku reference](https://devcenter.heroku.com/articles/getting-started-with-ruby#set-up)
-
-### Additional Tasks (Recommended)
-* The loading task is a **heavy-duty** one and would be **run in the background** in the real world. Use the **Sidekiq** gem to run the task in the background.
-Consider loading every restaurant in a separate job so you could load multiple restaurants in parallel.
-* Put the API key in an **environment variable**.
-You can use the [dotenv gem](https://github.com/bkeepers/dotenv) to store and initialize environment variables.
-Test your code with RSpec.
-* Gracefully handle http errors.
 
 #### Anything You Can Think Of!
 The purpose of WeEat is to give you a hands-on experience with our stack. Feel like there's a topic you want to try out and none of the existing tasks give you what you need? Talk with your buddy and come up with something.
