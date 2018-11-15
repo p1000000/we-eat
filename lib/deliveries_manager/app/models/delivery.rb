@@ -3,7 +3,7 @@
 class Delivery
   attr_reader :statuses, :id
 
-  @deliveries_store = Redis.new(host: '127.0.0.1', port: 6379, db: 0)
+  @deliveries_store = Redis.new(url: ENV['REDIS_URL'])
   @deliveries_store.setnx('__delivery_all', JSON.dump([]))
 
   def self.all
@@ -26,7 +26,7 @@ class Delivery
   end
 
   def self.create(name: nil)
-    delivery = Delivery.new
+    delivery = Delivery.new(name: name)
     set(delivery.id, JSON.dump(delivery.statuses.deep_dup))
 
     all = JSON.load(get('all')).insert(0, delivery.id)

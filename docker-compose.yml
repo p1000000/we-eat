@@ -11,7 +11,6 @@ services:
     # Uncomment to add environment variables
     # env_file: .env
     environment:
-      - DATABASE_URL=postgres://postgres:R0tate1@pg/
       # you can add more shared ENV here
       # you can also have multiple env_files if you prefer
       # committing it that way
@@ -19,8 +18,10 @@ services:
       # if you want to talk to something on the host
       # you can use this as the url (replacing `localhost`):
       # `host.docker.internal`
-      - NEW_RELIC_AGENT_ENABLED=false
+      - DATABASE_URL=postgres://postgres:R0tate1@pg/
       - REDIS_URL=redis://redis:6379
+      - RABBIT_URL=amqp://guest:guest@rabbitmq
+      - NEW_RELIC_AGENT_ENABLED=false
     volumes:
       # this replaces the project folder in the docker image with the current directory
       - ${PWD}:/app

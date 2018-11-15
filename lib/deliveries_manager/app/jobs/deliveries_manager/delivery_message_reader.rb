@@ -3,7 +3,7 @@
 module DeliveriesManager
   class DeliveryMessageReader
     def perform
-      conn = Bunny.new
+      conn = Bunny.new(ENV['RABBIT_URL'])
       conn.start
       channel = conn.create_channel
       queue = channel.queue('delivery.status_updated', auto_delete: true)

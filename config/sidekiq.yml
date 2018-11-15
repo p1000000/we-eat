@@ -3,3 +3,4 @@
 :queues:
   - ["critical", <%= ENV.fetch("CRITICAL_QUEUE_WEIGHT") { 2 } %>]
   - ["default",  <%= ENV.fetch("DEFAULT_QUEUE_WEIGHT") { 1 } %>]
+  - 'deliveries'
