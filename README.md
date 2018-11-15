@@ -6,7 +6,7 @@ To get started:
 
 1. Clone this repo (be sure to change the remote origin!): `git clone git@github.com:WeConnect/mission-4-we-eat-template.git`
 1. Run `script/setup` to install your needed gems, create the database(s) and other needs
-(You will need docker installed and Quay access for this step)
+(You will need [Docker](https://store.docker.com/editions/community/docker-ce-desktop-mac) installed and [Quay](https://github.com/WeConnect/spaceman/wiki/Signup-with-Quay.io) access for this step)
 
 ## Scripts to Rule Them All
 
