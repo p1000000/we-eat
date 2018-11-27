@@ -90,8 +90,8 @@ class restaurants extends React.Component {
           {
             ...restaurant,
             markerOpen: {
-              hover: false,
-              click: false
+              click: false,
+              mouseover: false
             },
             ByClick: false
           }
@@ -191,7 +191,7 @@ class restaurants extends React.Component {
         />
       ),
       openInfoWindow: (e) => this.setState(state => {
-        const eventType = (e === undefined || e.va.type === "click") ? "click" : "hover";
+        const eventType = (e === undefined || e.ya.type === "click") ? "click" : "mouseover";
         return {
           ...state,
           restaurants: state.restaurants.map(restaurant => {
@@ -202,7 +202,7 @@ class restaurants extends React.Component {
           })
         };
       }),
-      markerOpen: restaurantProps.markerOpen.hover || restaurantProps.markerOpen.click
+      markerOpen: restaurantProps.markerOpen.click || restaurantProps.markerOpen.mouseover
     }
   });
 
