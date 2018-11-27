@@ -90,7 +90,6 @@ class restaurants extends React.Component {
           {
             ...restaurant,
             markerOpen: {
-              hover: false,
               click: false,
               mouseover: false
             },
@@ -203,7 +202,7 @@ class restaurants extends React.Component {
           })
         };
       }),
-      markerOpen: restaurantProps.markerOpen.hover || restaurantProps.markerOpen.click || restaurantProps.markerOpen.mouseover
+      markerOpen: restaurantProps.markerOpen.click || restaurantProps.markerOpen.mouseover
     }
   });
 
