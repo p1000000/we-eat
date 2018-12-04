@@ -29,6 +29,7 @@ class RestaurantList extends React.Component {
           icon={restaurant.cuisine.icon}
           {...restaurant}
           addReview={this.props.addReview}
+          createOrder={this.props.createOrder}
           onSelect={this.props.onSelect}
         />
       );
