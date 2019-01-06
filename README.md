@@ -224,14 +224,17 @@ We will import ( = steal) restaurant and review data for restaurants in New York
 ### Part 3: Process Orders
 Add The Ability To Make An Order From A Specific Restaurant.  
 Whenever an order is being made the order app will publish an order to RabbitMq.  
-You would listen to the Mq and process the orders asynchronously using [sidekiq](https://github.com/mperham/sidekiq).  
+You would listen to the Mq and process the orders asynchronously using [sidekiq](https://github.com/mperham/sidekiq).
+Think of a concept of having a listener that is listening consistently (and not on demand)
 The orders can get to you not in chronicle order, each event will have a status and could have different fields.
+
 
 #### Directions
 * On the WeEat website an "ORDER" button exists on every restaurant. Submitting an order through it will trigger a new delivery flow, this will cause delivery status payloads to be sent on the queue.
 * Create a RabbitMQ listener for a queue named: 'delivery.status_updated', this queue will be receiving delivery status payloads which you will need to process.
 * Call the order processor - the sidekiq worker in charge of processing orders
 * Process the order - Save the order to the DB when you receive a status payload. Notice that you should save the merged order and keep the most advanced status.
+please notice that the "Orders" app is already listening to its own published orders
 
 #### Messaging details
 Here are some tips on how to get started.
