@@ -16,6 +16,7 @@ Based on the github (the company) concept, most interaction with the project is 
 
 For background view the [repo](https://github.com/github/scripts-to-rule-them-all) and the [blog post](https://githubengineering.com/scripts-to-rule-them-all/)
 
+Consult your buddy which parts of the pet project are more relevant for your teams work.
 ### Running
 Run the app on docker:
 ```
