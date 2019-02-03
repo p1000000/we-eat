@@ -200,7 +200,9 @@ class restaurants extends React.Component {
         />
       ),
       openInfoWindow: (e) => this.setState(state => {
-        const eventType = (e === undefined || e.ya.type === "click") ? "click" : "mouseover";
+        const type = e.type
+        const srcElement = e.srcElement
+        const eventType = (e === undefined || e.wa.type === "click") ? "click" : "mouseover";
         return {
           ...state,
           restaurants: state.restaurants.map(restaurant => {
