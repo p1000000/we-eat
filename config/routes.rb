@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   end
   mount Sidekiq::Web => '/sidekiq'
 
-  namespace :deliveries_manager do
-    resources :deliveries, only: [:index, :show, :create]
+  scope :api do
+    scope 'v1.0' do
+      namespace :deliveries_manager do
+        resources :deliveries, only: [:index, :show, :create]
+      end
+    end
   end
 end

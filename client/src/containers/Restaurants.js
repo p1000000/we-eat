@@ -193,11 +193,11 @@ class restaurants extends React.Component {
       coordinates: restaurantProps.coordinates,
       icon: restaurantProps.cuisine.icon,
       infoWindow: (
-          <RestaurantItem
-              compact
-              icon={restaurantProps.cuisine.icon}
-              {...restaurantProps}
-          />
+        <RestaurantItem
+          compact
+          icon={restaurantProps.cuisine.icon}
+          {...restaurantProps}
+        />
       ),
       openInfoWindow: (e) => this.setState(state => {
         const eventType = "mouseover";
