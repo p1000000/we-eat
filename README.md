@@ -8,7 +8,8 @@ To get started:
 ( Troubleshooting: clone might fail because you dont have a personal access token, to get one [see instructions](https://connect.we.co/pages/viewpage.action?pageId=135605341) )
 
 2. Run `script/setup` to install your needed gems, create the database(s) and other needs
-(You will need [Docker](https://store.docker.com/editions/community/docker-ce-desktop-mac) installed and [Quay](https://github.com/WeConnect/spaceman/wiki/Signup-with-Quay.io) access for this step)
+(You will need [Docker](https://store.docker.com/editions/community/docker-ce-desktop-mac) installed (recommended to enlarge the memory limit to 4 GB, Docker -> preferences -> advanced -> memory)
+and [Quay](https://github.com/WeConnect/spaceman/wiki/Signup-with-Quay.io) access for this step)
 
 ## Scripts to Rule Them All
 
@@ -207,6 +208,14 @@ Provided is the current's client api expected request/response.
 [Zomato](https://developers.zomato.com/) is an API provider which gives access to restaurant data all over the world.  
 We will import ( = steal) restaurant and review data for restaurants in New York City.
 
+**Zomato documentation access and generating token is blocked from Israel**
+
+you can use this API key - 64051c9e2b0354b2938b32fcf4cd8fb2
+
+In order to see Zomato documentation offline - you can copy zomato-swagger.json (can be found on the project main dir) to a swagger editor -
+https://editor.swagger.io/
+
+
 #### REQUIREMENTS
 * Load X NYC **restaurants** into our database.
 * For each restaurant, load at most Y **reviews**.
@@ -232,10 +241,10 @@ The orders can get to you not in chronicle order, each event will have a status 
 
 #### Directions
 * On the WeEat website an "ORDER" button exists on every restaurant. Submitting an order through it will trigger a new delivery flow, this will cause delivery status payloads to be sent on the queue.
+(the code for this is under lib/deliveries_manager - treat it as a black box)
 * Create a RabbitMQ listener for a queue named: 'delivery.status_updated', this queue will be receiving delivery status payloads which you will need to process.
 * Call the order processor - the sidekiq worker in charge of processing orders
 * Process the order - Save the order to the DB when you receive a status payload. Notice that you should save the merged order and keep the most advanced status.
-please notice that the "Orders" app is already listening to its own published orders
 
 #### Messaging details
 Here are some tips on how to get started.
