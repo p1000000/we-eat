@@ -193,14 +193,38 @@ class restaurants extends React.Component {
       coordinates: restaurantProps.coordinates,
       icon: restaurantProps.cuisine.icon,
       infoWindow: (
-        <RestaurantItem
-          compact
-          icon={restaurantProps.cuisine.icon}
-          {...restaurantProps}
-        />
+          <RestaurantItem
+              compact
+              icon={restaurantProps.cuisine.icon}
+              {...restaurantProps}
+          />
       ),
       openInfoWindow: (e) => this.setState(state => {
-        const eventType = (e === undefined || e.ya.type === "click") ? "click" : "mouseover";
+        const eventType = "mouseover";
+        return {
+          ...state,
+          restaurants: state.restaurants.map(restaurant => {
+            if (restaurant.id === restaurantProps.id) {
+              restaurant.markerOpen[eventType] = !restaurant.markerOpen[eventType];
+            }
+            return restaurant;
+          })
+        };
+      }),
+      closeInfoWindow: (e) => this.setState(state => {
+        const eventType = "mouseover";
+        return {
+          ...state,
+          restaurants: state.restaurants.map(restaurant => {
+            if (restaurant.id === restaurantProps.id) {
+              restaurant.markerOpen[eventType] = !restaurant.markerOpen[eventType];
+            }
+            return restaurant;
+          })
+        };
+      }),
+      clickInfoWindow: (e) => this.setState(state => {
+        const eventType = "click";
         return {
           ...state,
           restaurants: state.restaurants.map(restaurant => {

@@ -28,8 +28,8 @@ class Map extends React.Component {
         position={coordinates}
         animation={this._getAnimation(coordinates)}
         onMouseOver={openInfoWindow}
-        onMouseOut={openInfoWindow}
-        onClick={openInfoWindow}
+        onMouseOut={closeInfoWindow}
+        onClick={clickInfoWindow}
       >
         {markerOpen && this._renderInfoWindow(infoWindow, openInfoWindow)}
       </Marker>
