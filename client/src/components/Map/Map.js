@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
 class Map extends React.Component {
-  _renderInfoWindow = (infoWindow, openInfoWindow) => (
+  _renderInfoWindow = (infoWindow, clickInfoWindow) => (
     <InfoWindow
-      onCloseClick={openInfoWindow}
+      onCloseClick={clickInfoWindow}
     >
       {infoWindow}
     </InfoWindow>
@@ -21,17 +21,17 @@ class Map extends React.Component {
   };
 
   _renderMarkers = () => this.props.locations.map((location, index) => {
-    const { coordinates, icon, infoWindow, openInfoWindow, markerOpen } = location;
+    const { coordinates, icon, infoWindow, mouseOverInfoWindow, clickInfoWindow, markerOpen } = location;
     return (
       <Marker
         key={index}
         position={coordinates}
         animation={this._getAnimation(coordinates)}
-        onMouseOver={openInfoWindow}
-        onMouseOut={closeInfoWindow}
+        onMouseOver={mouseOverInfoWindow}
+        onMouseOut={mouseOverInfoWindow}
         onClick={clickInfoWindow}
       >
-        {markerOpen && this._renderInfoWindow(infoWindow, openInfoWindow)}
+        {markerOpen && this._renderInfoWindow(infoWindow, clickInfoWindow)}
       </Marker>
     );
   });
