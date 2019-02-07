@@ -199,10 +199,20 @@ class restaurants extends React.Component {
           {...restaurantProps}
         />
       ),
-      openInfoWindow: (e) => this.setState(state => {
-        const type = e.type
-        const srcElement = e.srcElement
-        const eventType = (e === undefined || e.wa.type === "click") ? "click" : "mouseover";
+      mouseOverInfoWindow: (e) => this.setState(state => {
+        const eventType = "mouseover";
+        return {
+          ...state,
+          restaurants: state.restaurants.map(restaurant => {
+            if (restaurant.id === restaurantProps.id) {
+              restaurant.markerOpen[eventType] = !restaurant.markerOpen[eventType];
+            }
+            return restaurant;
+          })
+        };
+      }),
+      clickInfoWindow: (e) => this.setState(state => {
+        const eventType = "click";
         return {
           ...state,
           restaurants: state.restaurants.map(restaurant => {
