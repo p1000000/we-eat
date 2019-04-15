@@ -92,7 +92,7 @@ class Delivery
   def package_in_route
     base_message.merge(status: 'In route',
                        courier: @courier,
-                       estimated_time_of_arival: "#{(SecureRandom.rand * 30).round(0)} minutes")
+                       estimated_time_of_arrival: "#{(SecureRandom.rand * 30).round(0)} minutes")
   end
 
   def package_delivered
