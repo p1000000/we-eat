@@ -314,7 +314,7 @@ The delivery service publishes these messages, in this order (if all goes well, 
   publish_time: Tue, 01 May 2018 05:56:08 +0000,
   status: 'In route',
   courier: 'Layla Bergnaum',
-  estimated_time_of_arival: '12 minutes'
+  estimated_time_of_arrival: '12 minutes'
 }
 
 # Delivered
