@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     scope 'v1.0' do
       resources :restaurants, only: :index
       resources :cuisines, only: :index
+      resources :reviews, only: :index
       resources :reviews, only: :create
     end
   end
