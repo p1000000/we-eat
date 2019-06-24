@@ -5,6 +5,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :restaurants
   resources :reviews
+  resources :cuisines
 
   scope :api do
     scope 'v1.0' do
