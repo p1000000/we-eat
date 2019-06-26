@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: cuisines
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  icon_uri   :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Cuisine, type: :model do
